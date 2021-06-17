@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import "./App.css";
+// import "./App.css";
 import "./import.css";
 import Navbar from "./components/layout/Navbar";
 import Users from "./components/users/Users";
@@ -64,7 +64,7 @@ class App extends Component {
           </Col>
         </Row>
 
-        <Row>
+        <Row style={{minHeight:'85vh'}} >
           <Col span={20} offset={2}>
             <div className="containerx">
               <Alert alert={this.state.alert} closeAlert={this.closeAlert} />
@@ -102,9 +102,9 @@ class App extends Component {
           </Col>
         </Row>
 
-        <Row>
-          <Col span={20} style={{ padding: "0 150px" }}>
-            Footer
+        <Row style={{backgroundColor:'#ccc', padding:'20px', textAlign:'center'}}>
+          <Col span={20} style={{ padding: "0 150px" } } offset={2}>
+            Github Finder 1.0
           </Col>
         </Row>
       </Router>

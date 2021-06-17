@@ -11,9 +11,9 @@ const selected = {
 export const Navbar = ({ icon, title }) => {
   // return (
   //   <nav className="navbar bg-primary">
-  //     <h1>
-  //       <i className={icon}></i> {title}
-  //     </h1>
+  // <h1>
+  //   <i className={icon}></i> {title}
+  // </h1>
   //     <ul>
   // <NavLink activeStyle={selected} exact to="/">
   //   Home
@@ -26,19 +26,28 @@ export const Navbar = ({ icon, title }) => {
   // );
 
   return (
-      <Menu theme="horizontal" mode="dark" defaultSelectedKeys={["1"]} style={{padding: '0 130px'}}>
-        <Menu.Item key={1}>
-          <NavLink exact to="/">
-            <i class="fas fa-home"></i> Home
-          </NavLink>
-        </Menu.Item>
-        <Menu.Item key={2}>
-          <NavLink exact to="/about">
-            About
-          </NavLink>
-        </Menu.Item>
-      </Menu>
+    <Menu  
+      theme="horizontal"
+      mode="dark"
+      defaultSelectedKeys={["1"]}
+      style={{ padding: "10px 130px" }}
+    >
 
+
+      <Menu.Item key={1}>
+        <NavLink exact to="/">
+          <i class="fas fa-home"></i> Home
+        </NavLink>
+      </Menu.Item>
+      <Menu.Item key={2}>
+        <NavLink exact to="/about">
+          About
+        </NavLink>
+      </Menu.Item>
+      <div style={{ color: "#fff", display: "inline-block", float: "right", fontSize:'1.5em', }}>
+        <i className={icon}></i> {title}
+      </div>
+    </Menu>
   );
 };
 
