@@ -1,14 +1,44 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
+import { Menu, Row, Col } from "antd";
+
+const selected = {
+  fontWeight: "bold",
+  borderBottom: "2px solid",
+};
 
 export const Navbar = ({ icon, title }) => {
-  // const {icon, title} = props;
+  // return (
+  //   <nav className="navbar bg-primary">
+  //     <h1>
+  //       <i className={icon}></i> {title}
+  //     </h1>
+  //     <ul>
+  // <NavLink activeStyle={selected} exact to="/">
+  //   Home
+  // </NavLink>
+  //       <NavLink activeStyle={selected} exact to="/about">
+  //         About
+  //       </NavLink>
+  //     </ul>
+  //   </nav>
+  // );
+
   return (
-    <nav className="navbar bg-primary">
-      <h1>
-        <i className={icon}></i> {title}
-      </h1>
-    </nav>
+      <Menu theme="horizontal" mode="dark" defaultSelectedKeys={["1"]} style={{padding: '0 130px'}}>
+        <Menu.Item key={1}>
+          <NavLink exact to="/">
+            <i class="fas fa-home"></i> Home
+          </NavLink>
+        </Menu.Item>
+        <Menu.Item key={2}>
+          <NavLink exact to="/about">
+            About
+          </NavLink>
+        </Menu.Item>
+      </Menu>
+
   );
 };
 

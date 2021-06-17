@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import '~antd/dist/antd.css';
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 20px;
+}
+
+.card-desc {
+  padding-bottom: 15px;
+}
+
+.ant-card-meta-avatar {
+  padding: 0;
+}

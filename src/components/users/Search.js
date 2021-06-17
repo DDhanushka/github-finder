@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Input, Space } from 'antd';
 
 export class Search extends React.Component {
   state = {
@@ -27,12 +28,17 @@ export class Search extends React.Component {
     }
   };
 
+  onSearch = value => console.log(value);
+
+
   render() {
     const { clearUsers, showClear } = this.props;
+    const { Search } = Input;
+
     return (
-      <div>
+      <div className="container">
         <form onSubmit={this.onSubmit} className="form">
-          <input
+          <Input
             type="text"
             name="text"
             placeholder="Search Users..."
@@ -49,6 +55,14 @@ export class Search extends React.Component {
               Clear
             </button>
           )}
+
+          <Search
+      placeholder="input search text"
+      allowClear
+      enterButton="Search"
+      size="large"
+      onSearch={this.onSearch}
+    />
         </form>
       </div>
     );

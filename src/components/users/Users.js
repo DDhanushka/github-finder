@@ -2,26 +2,25 @@ import React from "react";
 import UserItem from "./UserItem";
 import { Spinner } from "../layout/Spinnner";
 import PropTypes from "prop-types";
+import {Row, Col} from 'antd';
 
 export const Users = ({ users, loading }) => {
+
+
   if (loading) {
-    console.log('loading...');
+    console.log("loading...");
     return <Spinner />;
   } else {
     return (
-      <div style={userStyle}>
+      <Row wrap={true} justify='space-around' gutter={[0, 30]} style={{paddingTop:'30px'}}>
         {users.map((user) => (
           <UserItem key={user.id} user={user} />
         ))}
-      </div>
+      </Row>
+      
+
     );
   }
-};
-
-const userStyle = {
-  display: "grid",
-  gridTemplateColumns: "repeat(3,1fr)",
-  gridGap: "1rem",
 };
 
 Users.defaultProps = {
