@@ -122,7 +122,7 @@ class App extends Component {
           }}
         >
           <Col span={20} style={{ padding: "0 150px" }} offset={2}>
-            Github Finder 1.0
+            Github Finder 1.0.0
           </Col>
         </Row>
       </Router>

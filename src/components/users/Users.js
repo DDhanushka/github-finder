@@ -20,7 +20,7 @@ export const Users = ({ users, loading }) => {
         {users.length == 0 && (
           <div style={{textAlign:'center'}}>
             <p style={{ fontSize: "3em", color: "#ccc", textAlign: "center" }}>
-              Empty. Let's search something
+              Meow. Let's search someone.
             </p>
             <img src={gitcat} style={{ width: "50%" , display:'block', margin:'0 auto'}} />
           </div>
