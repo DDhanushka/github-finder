@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Input, Space } from "antd";
+import { Input, Button } from "antd";
 
 export class Search extends React.Component {
   state = {
@@ -64,13 +64,21 @@ export class Search extends React.Component {
 
 
         </form> */}
-        <Search
+        <Search 
           placeholder="Search Github users..."
           allowClear
           enterButton="Search"
           size="large"
           onSearch={this.onSearch}
         />
+
+        {showClear && (
+          <div style={{ textAlign: "center", padding:'20px 0 0 0 ' }}>
+            <Button danger type="primary" shape="circle" onClick={clearUsers}>
+            <i class="fas fa-trash"></i>
+            </Button>
+          </div>
+        )}
       </div>
     );
   }

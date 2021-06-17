@@ -3,17 +3,22 @@ import { Spinner } from "../layout/Spinnner";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { Button, Row, Col, Statistic } from "antd";
+import { Repos } from "../repos/Repos";
 
 export class User extends Component {
   static propTypes = {
     loading: PropTypes.bool.isRequired,
     user: PropTypes.object.isRequired,
     getUser: PropTypes.func.isRequired,
+    getUserRepos: PropTypes.func.isRequired,
+    repos: PropTypes.array.isRequired,
   };
 
   componentDidMount() {
     this.props.getUser(this.props.match.params.login);
+    this.props.getUserRepos(this.props.match.params.login);
   }
+
   render() {
     const {
       name,
@@ -29,7 +34,8 @@ export class User extends Component {
       public_gists,
       hireable,
     } = this.props.user;
-    const { loading } = this.props;
+
+    const { loading, repos } = this.props;
 
     if (loading) return <Spinner />;
     else {
@@ -54,8 +60,7 @@ export class User extends Component {
                   borderRadius: "10px",
                 }}
               />
-              <div style={{ paddingTop: "10px" }}>
-                <h1 style={{ margin: "0 0 25px 0" }}>{name}</h1>
+              <div style={{ paddingTop: "25px" }}>
                 Hireable:
                 {hireable ? (
                   <i
@@ -78,7 +83,7 @@ export class User extends Component {
 
             <Col span={18}>
               <div>
-                <h2> Bio</h2>
+                <h1 style={{ margin: "0 0 15px 0" }}>{name}</h1>
                 <p>{bio}</p>
 
                 <Button type="primary" style={{ marginTop: "15px" }}>
@@ -102,22 +107,22 @@ export class User extends Component {
 
           <Row gutter={16} style={{ margin: "25px 0" }}>
             <Col span={6}>
-              <Statistic
-                title="Followers"
-                value={followers}
-              />
+              <Statistic title="Followers" value={followers} />
             </Col>
             <Col span={6}>
-              <Statistic title="Following" value={following}  />
+              <Statistic title="Following" value={following} />
             </Col>
             <Col span={6}>
-              <Statistic
-                title="Public Repos"
-                value={public_repos}
-              />
+              <Statistic title="Public Repos" value={public_repos} />
             </Col>
             <Col span={6}>
-              <Statistic title="Public Gists" value={public_gists}  />
+              <Statistic title="Public Gists" value={public_gists} />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <h2>Few of the Repos</h2>
+              <Repos repos={repos} />
             </Col>
           </Row>
         </div>

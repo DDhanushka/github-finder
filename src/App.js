@@ -17,6 +17,7 @@ class App extends Component {
     loading: false,
     alert: null,
     user: {},
+    repos: [],
   };
 
   // search github users
@@ -39,6 +40,16 @@ class App extends Component {
     this.setState({ user: res.data, loading: false });
   };
 
+  // Get a single user
+  getUserRepos = async (username) => {
+    this.setState({ loading: true });
+    const res =
+      await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET} = '41e6bbc8ac5349e10833'
+      }`);
+
+    this.setState({ repos: res.data, loading: false });
+  };
+
   clearUsers = () => this.setState({ users: [], loading: false });
 
   // Set alert
@@ -53,18 +64,17 @@ class App extends Component {
   };
 
   render() {
-    const { loading, users, user } = this.state;
-    const { Header, Footer, Sider, Content } = Layout;
+    const { loading, users, user, repos } = this.state;
 
     return (
       <Router>
         <Row>
-          <Col span={24} >
+          <Col span={24}>
             <Navbar />
           </Col>
         </Row>
 
-        <Row style={{minHeight:'85vh'}} >
+        <Row style={{ minHeight: "85vh" }}>
           <Col span={20} offset={2}>
             <div className="containerx">
               <Alert alert={this.state.alert} closeAlert={this.closeAlert} />
@@ -92,7 +102,9 @@ class App extends Component {
                     <User
                       {...props}
                       getUser={this.getUser}
+                      getUserRepos={this.getUserRepos}
                       user={user}
+                      repos={repos}
                       loading={loading}
                     />
                   )}
@@ -102,8 +114,14 @@ class App extends Component {
           </Col>
         </Row>
 
-        <Row style={{backgroundColor:'#ccc', padding:'20px', textAlign:'center'}}>
-          <Col span={20} style={{ padding: "0 150px" } } offset={2}>
+        <Row
+          style={{
+            backgroundColor: "#ccc",
+            padding: "20px",
+            textAlign: "center",
+          }}
+        >
+          <Col span={20} style={{ padding: "0 150px" }} offset={2}>
             Github Finder 1.0
           </Col>
         </Row>

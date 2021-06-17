@@ -17,3 +17,26 @@
   padding: 0;
 }
 
+.repo-item {
+  border-bottom: 1px solid rgb(230, 230, 230);
+  padding:20px;
+  display: block;
+  width:100%;
+}
+
+.repo-item:last-child {
+  border-bottom: none;
+}
+
+.alert {
+  padding: 0.7rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  color: #333;
+}
+
+.alert-light {
+  background: #fff2f0;
+  color: #333;
+  border:1px solid #ffccc7;
+}
